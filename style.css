@@ -272,15 +272,47 @@ h3 {
 }
 
 /* Da 600 px: due colonne. */
-@media (min-width: 600px) {
-  .event-grid {
-    grid-template-columns: repeat(2, 1fr);
+/* Mappa e indirizzi */
+.mappa-contenitore {
+  max-width: 54rem;
+  margin-top: 1.5rem;
+}
+
+#mappa-sedi {
+  display: block;
+  width: 100%;
+  height: 360px;
+  border: 1px solid #b7c0b7;
+  border-radius: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  #mappa-sedi {
+    height: 480px;
   }
 }
 
-/* Da 1024 px: tre colonne. Questa regola segue quella da 600 px. */
-@media (min-width: 1024px) {
-  .event-grid {
-    grid-template-columns: repeat(3, 1fr);
+.indirizzi-sedi {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  max-width: 54rem;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .indirizzi-sedi {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+}
+
+.indirizzi-sedi li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1.25rem;
+  border: 1px solid #b7c0b7;
+  border-radius: 0.75rem;
+  background: #ffffff;
 }

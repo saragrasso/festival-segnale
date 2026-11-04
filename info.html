@@ -69,6 +69,35 @@
       <h2 id="titolo-arrivare">Come arrivare</h2>
       <!-- Qui andranno la mappa uMap, gli indirizzi e i collegamenti alle indicazioni. -->
     </section>
+
+      <div class="mappa-contenitore">
+        <iframe id="mappa-sedi"
+          title="Mappa delle tre sedi di riferimento per il festival Segnale a Torino"
+          src="https://umap.openstreetmap.fr/it/map/segnale-sedi-del-festival-immaginario_1479665?scaleControl=false&amp;miniMapControl=false&amp;scrollWheelZoom=false&amp;zoomControl=true&amp;editMode=disabled&amp;moreControl=true&amp;searchControl=null&amp;tilelayersControl=null&amp;embedControl=null&amp;datalayersControl=true&amp;onLoadPanel=none&amp;captionBar=false&amp;captionMenus=true#12/45.0465/7.6528"></iframe>
+        <p>
+          <a href="https://umap.openstreetmap.fr/it/map/segnale-sedi-del-festival-immaginario_1479665?scaleControl=false&amp;miniMapControl=false&amp;scrollWheelZoom=true&amp;zoomControl=true&amp;editMode=disabled&amp;moreControl=true&amp;searchControl=null&amp;tilelayersControl=null&amp;embedControl=null&amp;datalayersControl=true&amp;onLoadPanel=none&amp;captionBar=false&amp;captionMenus=true#12/45.0465/7.6528">Visualizza la mappa a schermo intero</a>
+        </p>
+      </div>
+
+      <h3>Indirizzi delle sedi</h3>
+      <ul class="indirizzi-sedi">
+        <li>
+          <strong>Sede centrale</strong>
+          <span>Corso Duca degli Abruzzi 24, Torino</span>
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Corso+Duca+degli+Abruzzi+24,+Torino">Indicazioni per la Sede centrale</a>
+        </li>
+        <li>
+          <strong>Politecnico al Valentino</strong>
+          <span>Viale Mattioli 39, Torino</span>
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Viale+Mattioli+39,+Torino">Indicazioni per il Politecnico al Valentino</a>
+        </li>
+        <li>
+          <strong>Sede di Mirafiori</strong>
+          <span>Corso Luigi Settembrini 178, Torino</span>
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Corso+Luigi+Settembrini+178,+Torino">Indicazioni per la sede di Mirafiori</a>
+        </li>
+      </ul>
+    </section>
   </main>
 
   <footer class="site-footer"><div class="container"><p>Segnale · Progetto didattico · Festival immaginario</p></div></footer>
@@ -78,6 +107,7 @@
     const galleria = new Swiper('.galleria-sedi', {
       slidesPerView: 1,
       spaceBetween: 16,
+      loop: true,
       navigation: {
         prevEl: '.swiper-button-prev',
         nextEl: '.swiper-button-next'
