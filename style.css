@@ -2,12 +2,13 @@
 
 /* Valori condivisi: le regole interessate li richiamano con var(). */
 :root {
-  --colore-primario: #234c78;
-  --colore-primario-scuro: #163454;
-  --colore-sfondo: #f5f2e9;
-  --colore-testo: #202923;
+  --colore-primario: #c8102e;
+  --colore-primario-scuro: #9b0c22;
+  --colore-accento: #f2c21b;
+  --colore-sfondo: #fff7e0;
+  --colore-testo: #1f2a44;
   --font-testo: Arial, Helvetica, sans-serif;
-  --font-titoli: Georgia, "Times New Roman", serif;
+  --font-titoli: "Londrina Solid", sans-serif;
 }
 
 * {
@@ -42,34 +43,42 @@ a:focus {
 }
 
 .site-header {
-  padding: 1.25rem 0;
-  border-bottom: 4px solid var(--colore-primario);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 0.75rem 0;
+  background: var(--colore-sfondo);
+  border-bottom: 4px solid var(--colore-accento);
 }
 
 .brand {
   display: inline-block;
   color: var(--colore-testo);
-  font-size: 1.75rem;
-  font-weight: bold;
-  line-height: 1.2;
+  font-family: var(--font-titoli);
+  font-size: 2.5rem;
+  font-weight: 400;
+  line-height: 1.1;
   text-decoration: none;
 }
 
 .brand span {
   display: block;
   margin-top: 0.25rem;
+  font-family: var(--font-testo);
   font-size: 0.875rem;
   font-weight: normal;
 }
 
 nav {
-  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 0.5rem;
 }
 
 nav a {
-  display: inline-block;
-  margin-right: 1rem;
-  padding: 0.25rem 0;
+  display: block;
+  padding: 0.3rem 0;
 }
 
 .intro {
@@ -78,7 +87,7 @@ nav a {
 
 .eyebrow,
 .event-meta {
-  color: #46564b;
+  color: #4a5470;
   font-size: 0.875rem;
   font-weight: bold;
 }
@@ -87,6 +96,7 @@ h1,
 h2,
 h3 {
   font-family: var(--font-titoli);
+  font-weight: 400;
   line-height: 1.2;
 }
 
@@ -159,7 +169,7 @@ h3 {
 
 .event-card {
   overflow: hidden;
-  border: 1px solid #b7c0b7;
+  border: 1px solid #d8cdb0;
   border-radius: 0.75rem;
   background: #ffffff;
 }
@@ -176,14 +186,14 @@ h3 {
 
 .event-place {
   margin-bottom: 0;
-  color: #46564b;
+  color: #4a5470;
   font-size: 0.875rem;
 }
 
 .site-footer {
   padding: 1.25rem 0;
-  border-top: 1px solid #b7c0b7;
-  color: #46564b;
+  border-top: 1px solid #d8cdb0;
+  color: #4a5470;
   font-size: 0.875rem;
 }
 
@@ -205,7 +215,7 @@ h3 {
   max-width: 54rem;
   margin-top: 1.5rem;
   padding-bottom: 4.5rem; /* spazio per i pulsanti sotto la didascalia */
-  border: 1px solid #b7c0b7;
+  border: 1px solid #d8cdb0;
   border-radius: 0.75rem;
   background: #ffffff;
 }
@@ -282,7 +292,7 @@ h3 {
   display: block;
   width: 100%;
   height: 360px;
-  border: 1px solid #b7c0b7;
+  border: 1px solid #d8cdb0;
   border-radius: 0.75rem;
 }
 
@@ -312,7 +322,15 @@ h3 {
   flex-direction: column;
   gap: 0.25rem;
   padding: 1.25rem;
-  border: 1px solid #b7c0b7;
+  border: 1px solid #d8cdb0;
   border-radius: 0.75rem;
   background: #ffffff;
+}
+
+/* Da 600 px: menu in riga */
+@media (min-width: 600px) {
+  nav {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
 }
