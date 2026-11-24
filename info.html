@@ -99,6 +99,29 @@
         </li>
       </ul>
     </section>
+
+    <section class="content-section" aria-labelledby="titolo-meteo">
+      <h2 id="titolo-meteo">Meteo a Torino adesso</h2>
+
+      <div id="meteo-riquadro" class="meteo-riquadro">
+        <p id="meteo-stato" role="status">Caricamento del meteo…</p>
+
+        <dl id="meteo-dati" class="meteo-dati" hidden>
+          <div>
+            <dt>Temperatura</dt>
+            <dd id="meteo-temperatura"></dd>
+          </div>
+          <div>
+            <dt>Vento</dt>
+            <dd id="meteo-vento"></dd>
+          </div>
+        </dl>
+
+        <p id="meteo-ora" class="meteo-nota" hidden></p>
+        <p class="meteo-nota">Questo è il meteo di oggi a Torino, non la previsione per il 12–13 giugno.</p>
+        <p class="meteo-fonte">Dati meteo: <a href="https://open-meteo.com/">Open-Meteo</a>, licenza <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer"><div class="container"><p>Segnale · Progetto didattico · Festival immaginario</p></div></footer>
@@ -115,5 +138,72 @@
       }
     });
   </script>
+  <script>
+    // Meteo a Torino adesso: una sola richiesta a Open-Meteo.
+    // Se qualcosa non va, l'errore resta nel riquadro e il resto della pagina funziona.
+    const indirizzoMeteo =
+      'https://api.open-meteo.com/v1/forecast' +
+      '?latitude=45.0703&longitude=7.6869' +
+      '&current=temperature_2m,wind_speed_10m' +
+      '&timezone=Europe%2FRome';
+
+    const riquadroMeteo = document.querySelector('#meteo-riquadro');
+    const statoMeteo = document.querySelector('#meteo-stato');
+    const datiMeteo = document.querySelector('#meteo-dati');
+    const temperaturaMeteo = document.querySelector('#meteo-temperatura');
+    const ventoMeteo = document.querySelector('#meteo-vento');
+    const oraMeteo = document.querySelector('#meteo-ora');
+
+    // "2026-11-25T00:15" -> "25 novembre 2026 alle 00:15"
+    function formattaOraMeteo(testo) {
+      const [giorno, ora] = testo.split('T');
+      const data = new Date(giorno + 'T00:00:00Z');
+      if (Number.isNaN(data.getTime()) || !ora) {
+        return testo;
+      }
+      const giornoLeggibile = new Intl.DateTimeFormat('it-IT', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+        timeZone: 'UTC'
+      }).format(data);
+      return giornoLeggibile + ' alle ' + ora;
+    }
+
+    async function caricaMeteo() {
+      try {
+        const risposta = await fetch(indirizzoMeteo);
+        if (!risposta.ok) {
+          throw new Error('Meteo non disponibile (stato ' + risposta.status + ')');
+        }
+
+        const dati = await risposta.json();
+        const adesso = dati.current;
+        const unita = dati.current_units;
+
+        if (
+          !adesso ||
+          typeof adesso.temperature_2m !== 'number' ||
+          typeof adesso.wind_speed_10m !== 'number' ||
+          !adesso.time
+        ) {
+          throw new Error('Risposta meteo incompleta');
+        }
+
+        temperaturaMeteo.textContent = adesso.temperature_2m + ' ' + unita.temperature_2m;
+        ventoMeteo.textContent = adesso.wind_speed_10m + ' ' + unita.wind_speed_10m;
+        oraMeteo.textContent = 'Dato rilevato il ' + formattaOraMeteo(adesso.time) + '.';
+
+        statoMeteo.hidden = true;
+        datiMeteo.hidden = false;
+        oraMeteo.hidden = false;
+      } catch (errore) {
+        console.error(errore);
+        riquadroMeteo.classList.add('errore');
+        statoMeteo.textContent = 'Il meteo non è disponibile al momento.';
+      }
+    }
+
+    caricaMeteo();
+  </script>
 </body>
-</html>

@@ -346,6 +346,65 @@ h3 {
   background: #ffffff;
 }
 
+/* Meteo a Torino adesso */
+.meteo-riquadro {
+  max-width: 54rem;
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid #d8cdb0;
+  border-left: 6px solid var(--colore-accento);
+  border-radius: 0.75rem;
+  background: #ffffff;
+}
+
+.meteo-riquadro.errore {
+  border-left-color: var(--colore-primario);
+}
+
+.meteo-riquadro p {
+  margin: 0 0 0.75rem;
+}
+
+.meteo-dati {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 0 0 1rem;
+}
+
+.meteo-dati[hidden],
+.meteo-riquadro p[hidden] {
+  display: none;
+}
+
+.meteo-dati dt {
+  color: #4a5470;
+  font-size: 0.875rem;
+  font-weight: bold;
+}
+
+.meteo-dati dd {
+  margin: 0;
+  font-family: var(--font-titoli);
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+.meteo-nota,
+.meteo-fonte {
+  font-size: 0.875rem;
+}
+
+.meteo-fonte {
+  margin-bottom: 0;
+}
+
+@media (min-width: 600px) {
+  .meteo-dati {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 /* Da 600 px: menu in riga */
 @media (min-width: 600px) {
   nav {
