@@ -190,6 +190,25 @@ h3 {
   font-size: 0.875rem;
 }
 
+/* Messaggi del Programma: caricamento, nessun evento, errore. */
+.stato-programma {
+  max-width: 65ch;
+  margin: 1rem 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid #d8cdb0;
+  border-left: 6px solid var(--colore-accento);
+  border-radius: 0.75rem;
+  background: #ffffff;
+}
+
+.stato-programma.errore {
+  border-left-color: var(--colore-primario);
+}
+
+.stato-programma[hidden] {
+  display: none;
+}
+
 .site-footer {
   padding: 1.25rem 0;
   border-top: 1px solid #d8cdb0;
