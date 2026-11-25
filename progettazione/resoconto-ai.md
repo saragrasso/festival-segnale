@@ -2,16 +2,14 @@
 
 ## Sessione 1 · 24–25 novembre
 
-- **Confronto con lo ZIP del professore**: ho chiesto al chatbot di guardare lo ZIP della consegna. Ha controllato che gli eventi 1 e 4 e la sede 1 coincidessero con i miei contenuti. Ho continuato dal mio sito, non da quello dello ZIP, e ho tenuto gli id originali senza rinumerare.
-- **Struttura di `info.html`**: il chatbot ha notato una `</section>` chiusa troppo presto nella sezione «Come arrivare», con mappa e indirizzi rimasti fuori dalla sezione. Ho sostituito il file con la versione corretta e ho controllato in Live Preview che la pagina fosse uguale a prima.
-- **Completare i JSON**: ho chiesto `eventi.json` e `sedi.json` completi, ricavati dal mio Programma e da Info e luoghi. Ho usato i file come proposti: i nomi delle sedi 2 e 3 sono stati costruiti dal chatbot unendo il nome del festival e quello della sede. Ho verificato che i file si aprissero nel browser da Live Preview.
-- **Scheda dati e schema Mermaid**: ho chiesto `dati/SCHEMA.md` con i 7 punti richiesti e lo schema Evento–Sede, con solo i campi dei JSON. Ho usato il file senza modifiche e ho verificato su GitHub che le tabelle e il diagramma fossero visibili.
-- **Programma generato dai dati**: ho chiesto di togliere le sei schede dall'HTML e di costruirle con `fetch` da `eventi.json` e `sedi.json`, con messaggi per caricamento, nessun evento, errore e «Sede da definire». Ho usato `programma.html`, il nuovo `programma.js` e una regola in `style.css`. Ho controllato in Live Preview che le schede comparissero con la sede corretta.
-- **Meteo a Torino adesso**: ho chiesto un riquadro in Info e luoghi con temperatura, vento e ora del dato da Open-Meteo, la fonte con collegamento, la nota che è il meteo di oggi e un errore limitato al riquadro. Ho usato il codice proposto e ho controllato che il riquadro comparisse in fondo alla pagina e che galleria e mappa funzionassero come prima.
-- **Prove di verifica**: ho eseguito le cinque prove previste dalla consegna, una alla volta, salvando e aggiornando la pagina con Ctrl+F5, poi ripristinando i file.
-  - Nome di una sede cambiato in `sedi.json` («Officina Nord» in «Officina Sud»): il nuovo nome è comparso nelle schede degli eventi di quella sede, senza toccare `eventi.json`.
-  - `[]` in `eventi.json`: nella pagina Programma è comparso il messaggio «Nessun evento in programma.»
-  - `sedi.json` rinominato in `sedi2.json`: nessuna scheda e messaggio «Il programma non è disponibile.», nel riquadro con il bordo rosso.
-  - `sede_id` 99 in un evento: «Lettere in movimento» è comparso lo stesso, con «Sede: Sede da definire».
-  - Indirizzo del meteo con `temperatura_2m` al posto di `temperature_2m`: nel riquadro è comparso il messaggio di errore del meteo, mentre galleria e mappa hanno continuato a funzionare.
-- **Problemi e soluzioni**: Git non era installato e l'ho installato. VS Code segnalava la repository come non sicura, risolto con *Manage Unsafe Repositories*. Il primo push è stato rifiutato da GitHub per la privacy dell'email: ho impostato l'indirizzo noreply di GitHub e rifatto il commit con `git commit --amend --reset-author`. Durante la prova del meteo, il chatbot mi aveva detto che `temperature_2m` compariva una sola volta, ma nel codice compare più volte: dopo aver ripristinato con Ctrl+Z solo alcune occorrenze, la pagina mostrava «undefined undefined» al posto della temperatura. L'ho risolto con *Discard Changes* in Source Control, che ha riportato `info.html` all'ultimo commit funzionante.
+- Struttura di `info.html`: ho chiesto di controllare il file. Il chatbot ha trovato una `</section>` chiusa troppo presto in «Come arrivare». Ho usato il file corretto e verificato in Live Preview che la pagina fosse identica a prima.
+- Completare i JSON: ho chiesto `eventi.json` e `sedi.json` completi, presi dal mio Programma e da Info e luoghi. Ho usato i file proposti, con i nomi delle sedi 2 e 3 costruiti dal chatbot. Ho verificato che si aprissero nel browser da Live Preview.
+- Scheda dati: ho chiesto `dati/SCHEMA.md` con i sette punti richiesti e lo schema Evento–Sede in Mermaid, usando solo i campi dei JSON. Ho usato il file senza modifiche. Su GitHub ho controllato tabelle e diagramma.
+- Programma dai dati: ho chiesto di togliere le sei schede dall'HTML e di crearle con `fetch` da `eventi.json` e `sedi.json`. Ho chiesto anche i messaggi per caricamento, nessun evento, errore e «Sede da definire». Ho usato `programma.html`, `programma.js` e un blocco in `style.css`. Ho controllato le sei schede e le sedi in Live Preview.
+- Meteo a Torino adesso: ho chiesto un riquadro in Info e luoghi con temperatura, vento e ora, letti da Open-Meteo. Ho chiesto anche la fonte con link, la nota «meteo di oggi» e l'errore limitato al riquadro. Ho usato il codice proposto e controllato che galleria e mappa funzionassero come prima.
+- Prove di verifica: ho eseguito le cinque prove, una alla volta, con Ctrl+F5 e ripristino dei file.
+  - Nome sede cambiato: il nuovo nome compare nelle schede dei suoi eventi.
+  - `[]` in `eventi.json`: compare «Nessun evento in programma.»
+  - `sedi.json` rinominato: compare «Il programma non è disponibile.»
+  - `sede_id` 99: l'evento compare con «Sede da definire».
+  - Indirizzo meteo sbagliato: errore solo nel riquadro, galleria e mappa funzionano.
